@@ -1,0 +1,15 @@
+{
+    "name": "distinctm/measurement-converter",
+    "description": "A tool for converting common measurements in the boating industry",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "distinctm",
+            "email": "jani@marketdistinctly.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "orchestra/testbench": "^3.7"
+    }
+}
