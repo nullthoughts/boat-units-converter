@@ -1,5 +1,5 @@
 {
-    "name": "distinctm/measurement-converter",
+    "name": "distinctm/converter",
     "description": "A tool for converting common measurements in the boating industry",
     "license": "MIT",
     "authors": [
@@ -11,5 +11,15 @@
     "require": {},
     "require-dev": {
         "orchestra/testbench": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "distinctm\\Converter\\": "src/" 
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "distinctm\\Converter\\Tests\\": "tests/"
+        }
     }
 }
