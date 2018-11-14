@@ -35,6 +35,25 @@ class LengthTest extends TestCase
         $this->assertEquals(8.25, $result);
     }
 
+    /** @test */
+    public function inches_to_foot_inches()
+    {
+        $result = (new Length)->convert('inches', 99, 'foot-inches');
+        $this->assertEquals("8'3\"", $result);
+    }  
 
-    // inches to foot inches
+    /** @test */
+    public function inches_to_foot_inches_options()
+    {
+        $result = (new Length)->convert('inches', 99, 'foot-inches', [' ft, ', ' in']);
+        $this->assertEquals("8 ft, 3 in", $result);
+    }  
+
+    /** @test */
+    public function messy_feet_to_inches()
+    {
+        $result = (new Length)->convert('feet', 8.083333, 'inches');
+        $this->assertEquals(97, $result);
+    }
+
 } 
