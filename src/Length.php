@@ -46,28 +46,32 @@ class Length extends UnitOfMeasure
      * @param array $options
      * @return float
      */
-    protected function toFeet(float $value, $options = null)
+    protected function toFeet(float $value, $options)
     {
-        // Add options for decimals, etc
-        return number_format($value / 12, 2);
+        $options = $options ?? [2];
+
+        return number_format($value / 12, $options[0]);
     }
 
     /**
      * Converts to foot-inches
      *
      * @param float $value
+     * @param array $options
      * @return string
      */
-    protected function toFootInches(float $value)
+    protected function toFootInches(float $value, $options)
     {
+        $options = $options ?? ["'", "\""];
+
         $feet = $value / 12;
         $feet = explode('.', $feet)[0];
         $inches = $value - ($feet * 12);
 
         $output = '';
-        $output .= $feet ? $feet . "'" : null;
-        $output .= $inches ? $inches . '"' : null;
-
+        $output .= $feet ? $feet . $options[0] : null;
+        $output .= $inches ? $inches . $options[1] : null;
+        
         return $output;
     }
 
@@ -77,9 +81,11 @@ class Length extends UnitOfMeasure
      * @param float $value
      * @return float
      */
-    protected function toInches(float $value)
+    protected function toInches(float $value, $options)
     {
-        return $value;
+        $options = $options ?? [2];
+
+        return number_format($value, $options[0]);
     }
 
 }
