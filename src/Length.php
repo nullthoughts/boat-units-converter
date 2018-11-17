@@ -72,7 +72,7 @@ class Length extends UnitOfMeasure
         $output .= $feet ? $feet . $options[0] : null;
         $output .= $inches ? $inches . $options[1] : null;
         
-        return $output;
+        return trim($output);
     }
 
     /**

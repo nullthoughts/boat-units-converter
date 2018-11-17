@@ -50,6 +50,14 @@ class LengthTest extends TestCase
     }  
 
     /** @test */
+    public function inches_to_foot_inches_full_feet()
+    {
+        $result = (new Length)->convert('inches', 60, 'foot-inches', ["' ", "\""]);
+        $this->assertEquals("5'", $result);
+    }  
+
+
+    /** @test */
     public function messy_feet_to_inches()
     {
         $result = (new Length)->convert('feet', 8.083333, 'inches');
