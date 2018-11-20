@@ -52,16 +52,31 @@ class LengthTest extends TestCase
     /** @test */
     public function inches_to_foot_inches_full_feet()
     {
-        $result = (new Length)->convert('inches', 60, 'foot-inches', ["' ", "\""]);
-        $this->assertEquals("5'", $result);
+        $result = (new Length)->convert('inches', 264.00, 'foot-inches', ["' ", "\""]);
+        $this->assertEquals("22'", $result);
     }  
-
 
     /** @test */
     public function messy_feet_to_inches()
     {
         $result = (new Length)->convert('feet', 8.083333, 'inches');
         $this->assertEquals(97, $result);
+    }
+
+    /** @test */
+    public function unknown_from_conversion_formula()
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('"from" conversion formula not found');
+        $result = (new Length)->convert('gallons', 8.083333, 'inches');
+    }
+
+    /** @test */
+    public function unknown_to_conversion_formula()
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('"to" conversion formula not found');
+        $result = (new Length)->convert('feet', 8.083333, 'gallons');
     }
 
 } 
