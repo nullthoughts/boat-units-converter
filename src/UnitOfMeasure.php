@@ -2,7 +2,7 @@
 
 namespace distinctm\Converter;
 
-class UnitOfMeasure
+abstract class UnitOfMeasure
 {
     /**
      * Converts from one unit of measure to another
@@ -35,7 +35,7 @@ class UnitOfMeasure
         $method = $direction . str_replace( '-', '', $unit);
 
         if(!method_exists($this, $method)) {
-            throw new \Exception($direction . " conversion formula not found");
+            throw new \Exception("\"". $direction . "\" conversion formula not found");
         }
 
         return $method;
