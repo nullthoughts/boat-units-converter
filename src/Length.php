@@ -83,7 +83,7 @@ class Length extends UnitOfMeasure
      */
     protected function toInches(float $value, $options)
     {
-        $options = $options ?? [2];
+        $options = $options ?? [0];
 
         return number_format($value, $options[0]);
     }
