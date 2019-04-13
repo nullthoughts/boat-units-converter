@@ -17,8 +17,8 @@ class Length extends UnitOfMeasure
         return number_format($value, 2);
     }
 
-    /** Standardizes feet 
-     * 
+    /** Standardizes feet
+     *
      * @param float $value
      * @return float
     */
@@ -35,8 +35,9 @@ class Length extends UnitOfMeasure
      */
     protected function fromFootInches(string $value)
     {
-        preg_match('/^(\d+)\s?(?:\'|ft)\s?(\d{1,2})\s?(?:"|in)$/', $value, $matches);    
-        return ($matches[1] * 12) + $matches[2];
+        preg_match('/^(\d+)\s?(?:\'|ft)\s?(\d{1,2})?\s?(?:"|in)?$/', $value, $matches);
+
+        return ($matches[1] * 12) + ($matches[2] ?? 0);
     }
 
     /**
@@ -87,5 +88,4 @@ class Length extends UnitOfMeasure
 
         return number_format($value, $options[0]);
     }
-
 }
