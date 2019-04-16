@@ -35,7 +35,11 @@ class Length extends UnitOfMeasure
      */
     protected function fromFootInches(string $value)
     {
-        preg_match('/^(\d+)\s?(?:\'|ft)\s?(\d{1,2})?\s?(?:"|in)?$/', $value, $matches);
+        preg_match('/^(\d+)\s?(?:\'|ft)\s?(\d{1,2}|\d{1}\.\d{1})?\s?(?:"|in)?$/', $value, $matches);
+
+        if (!isset($matches[1])) {
+            dd($value);
+        }
 
         return ($matches[1] * 12) + ($matches[2] ?? 0);
     }
@@ -67,7 +71,7 @@ class Length extends UnitOfMeasure
 
         $feet = $value / 12;
         $feet = explode('.', $feet)[0];
-        $inches = $value - ($feet * 12);
+        $inches = round($value - ($feet * 12));
 
         $output = '';
         $output .= $feet ? $feet . $options[0] : null;

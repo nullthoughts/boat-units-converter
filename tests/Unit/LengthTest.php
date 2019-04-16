@@ -71,6 +71,20 @@ class LengthTest extends TestCase
     }
 
     /** @test */
+    public function foot_inches_to_foot_inches_with_decimal_inches()
+    {
+        $result = (new Length)->convert('foot-inches', "7' 6.5", 'foot-inches');
+        $this->assertEquals("7'7\"", $result);
+    }
+
+    /** @test */
+    public function foot_inches_with_decimal_inches_to_inches()
+    {
+        $result = (new Length)->convert('foot-inches', "7' 6.5", 'inches');
+        $this->assertEquals("91", $result);
+    }
+
+    /** @test */
     public function unknown_from_conversion_formula()
     {
         $this->expectException(\Exception::class);
