@@ -35,11 +35,7 @@ class Length extends UnitOfMeasure
      */
     protected function fromFootInches(string $value)
     {
-        preg_match('/^(\d+)\s?(?:\'|ft)\s?(\d{1,2}|\d{1}\.\d{1})?\s?(?:"|in)?$/', $value, $matches);
-
-        if (!isset($matches[1])) {
-            dd($value);
-        }
+        preg_match('/^(\d+)\s?(?:\'|ft)\s?(\d{1,2}|\d{1}\.\d{1})?\s?(?:"|in|\'\')?$/', $value, $matches);
 
         return ($matches[1] * 12) + ($matches[2] ?? 0);
     }

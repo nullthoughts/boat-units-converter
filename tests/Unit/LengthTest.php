@@ -71,6 +71,20 @@ class LengthTest extends TestCase
     }
 
     /** @test */
+    public function foot_inches_with_double_single_quotes_to_foot_inches()
+    {
+        $result = (new Length)->convert('foot-inches', "7' 2''", 'foot-inches');
+        $this->assertEquals("7'2\"", $result);
+    }
+
+    /** @test */
+    public function foot_inches_with_double_single_quotes_to_inches()
+    {
+        $result = (new Length)->convert('foot-inches', "7' 2''", 'inches');
+        $this->assertEquals(86, $result);
+    }
+
+    /** @test */
     public function foot_inches_to_foot_inches_with_decimal_inches()
     {
         $result = (new Length)->convert('foot-inches', "7' 6.5", 'foot-inches');
@@ -81,7 +95,7 @@ class LengthTest extends TestCase
     public function foot_inches_with_decimal_inches_to_inches()
     {
         $result = (new Length)->convert('foot-inches', "7' 6.5", 'inches');
-        $this->assertEquals("91", $result);
+        $this->assertEquals(91, $result);
     }
 
     /** @test */
